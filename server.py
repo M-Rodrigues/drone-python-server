@@ -12,7 +12,6 @@ def connect(sid, environ):
 
 @sio.event
 def sensor_data(sid, data):
-    print(sid, data)
     sio.emit('sensor_data_ack')
 
 @sio.event
@@ -28,4 +27,3 @@ def disconnect(sid):
 if __name__ == '__main__':
     eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
     print('HEEEEEEEEEY')
-
