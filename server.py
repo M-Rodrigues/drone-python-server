@@ -1,5 +1,6 @@
 import eventlet
 import socketio
+import os
 import time
 
 sio = socketio.Server(cors_allowed_origins='*')
@@ -25,5 +26,11 @@ def disconnect(sid):
     print('user disconnected', sid)
 
 if __name__ == '__main__':
-    eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
-    print('HEEEEEEEEEY')
+    pid = os.fork()
+    if pid == 0:
+        print('HEY')
+        time.sleep(1)
+        print('HEEEEEEY')
+        exit()
+    else:
+        eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
