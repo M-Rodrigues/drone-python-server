@@ -1,7 +1,8 @@
 # drone-python-server
-A python socket.io server to receive data from remote controller and process the signals to control the quadcopter drone (raspberypi)
+A python drone flight controller with bluetooth connection with android remote device 
 
-## Instalation
-- socket.io python library ([here](https://python-socketio.readthedocs.io/en/latest/api.html#server-class))
-- eventlet library ([here](https://eventlet.net/))
-- RPIO ([here](https://pythonhosted.org/RPIO/index.html#documentation))
+## How to use it
+- start rfcomm in raspberry pi (for now, leave it running in another terminal)
+  - ```$ sudo rfcomm watch hci0```
+- start application
+  - ```python3 index.py```

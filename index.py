@@ -7,10 +7,6 @@ payload = ''
 orient = {}
 
 while True:
-  c = ser.read()
-  if (c == '\n'):
-    orient = json.loads(payload)
-    print(orient)
-    payload = ''
-  else:
-    payload += c
+  payload = ser.readline()
+  orient = json.loads(payload)
+  print(orient)
