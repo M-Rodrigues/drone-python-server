@@ -1,5 +1,9 @@
+cur_state = {}
+
 def start_drone(q):
 	while True:
 		if not q.empty():
-			state = q.get()
-			print('Orientation state updated', state)
+			cur_state = q.get()
+			print('NEW', cur_state)
+		else:
+			print(cur_state)

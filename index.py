@@ -1,15 +1,19 @@
 import json
 import serial
 
-ser = serial.Serial('/dev/rfcomm0', 9600)
+def start_server(q):
+  ser = serial.Serial('/dev/rfcomm0', 9600)
 
-payload = ''
-orient = {}
+  payload = ''
+  orient = {}
 
-print('Ready')
-while True:
-  payload = ser.readline()
-  # print(payload)
-  orient = json.loads(payload)
-  print(orient)
-  ser.write(b'ACK\t')
+  print('start_server:: Ready')
+  while True:
+    payload = ser.readline()
+    ser.write(b'ACK\t')
+
+    orient = json.loads(payload)
+    
+    if not q.empty():
+			q.get()
+		q.put(orient)

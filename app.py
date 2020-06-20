@@ -1,7 +1,7 @@
 import multiprocessing
 
 from drone import start_drone
-from server import start_server
+from index import start_server
 
 if __name__ == "__main__": 
 	q = multiprocessing.Queue() 
