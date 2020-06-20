@@ -1,6 +1,6 @@
-cur_state = {}
 
 def start_drone(q):
+	cur_state = {}
 	while True:
 		if not q.empty():
 			cur_state = q.get()
