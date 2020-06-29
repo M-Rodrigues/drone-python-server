@@ -27,16 +27,15 @@ try:
 
     # Get data from local sensor
     t2 = time.time()
-    cur_state = drone_imu.get_data(t2-t1)
-    t1 = t2
-
+    cur_state = drone_imu.get_data(t2 - t1)
+    
     # Find difference between actual and target values.
     error_state = {}
     for direction in cur_state:
       error_state[direction] = cur_state[direction] - target_state[direction]
 
     # Calculate needed corrections (PID)
-    corrections = pid.update(error_state)
+    corrections = pid.update(error_state, t2 - t1)
 
     # Apply corrections to motors
     for motor_key in power:
@@ -52,6 +51,8 @@ try:
     # print('power\t\t', power)
     # print('corrections\t', corrections)
     print('\n')
+
+    t1 = t2
 except KeyboardInterrupt:
   pass
 
